@@ -32,7 +32,16 @@ certfunc() {
 		echo -e "[*] Saving ca Cert File to ca.crt "
 		echo -e "[*] Using config from /usr/lib/ssl/openssl.cnf "
 		echo -e "[*] Saving to $CERTDIR Directory.. "
-		openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+		# Create CA.crt and CA.key for crt: openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+		#Create client/crt key and csr: openssl genrsa -verbose -out ""${pwdd}/customerkey.key" 2048
+		# Create CSR:   openssl req -new -key customerkey.key -out mycertreq.csr -config openssl.cnf
+		#Create Final CRT for client: openssl ca -in mycertreq.csr -out clientCRT.crt -cert ca.crt -keyfile ca.key -config openssl.cnf
+
+
+
+		#Convert key file to .pem: openssl rsa -in yourkey.key -out yourkey.pem -outform PEM
+		#Convert crt file to .pem: openssl x509 -inform PEM -in server.crt > public.pem ORRRR  openssl x509 -inform DER -outform PEM -in server.crt -out server.crt.pem
+		#Both in one pem file: cat server.crt server.key > server.includesprivatekey.pem
 
 	fi	
 
