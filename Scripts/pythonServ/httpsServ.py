@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+#TODO: MAKE ENV VARS REGARDING EACH PEM FILE (key + certificate / csr)
+#TO USE, SIMPLY CREATE A CERT AND KEY (e.g. openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout MyRootCA.key -out MyRootCA.crt -subj "/C=US/ST=State/L=City/O=Organization/CN=My Custom Root CA")
+# THEN POINT EACH PEM FILE TO THEIR RESPECTIVE LOCATION IN "pemCrt" & "pemKey"
 
 import ssl, sys, os
 import http.server
@@ -122,8 +124,9 @@ def sslServ(file_path, file_name):
 	xXX = xX[0]
 	#print(xXX)
 	##Hardcoded SSL cert, and pem to confirm client tls
-	pemCrt = "/home/whftf/Downloads/Scripts/HTTPSTUFF/Scripts/pythonServ/certs/clientfiles/selfcrt.pem"
-	pemKey = "/home/whftf/Downloads/Scripts/HTTPSTUFF/Scripts/pythonServ/certs/clientfiles/self.pem"
+	#TODO: MAKE ENV VARS REGARDING EACH PEM FILE (key + certificate / csr)
+	pemCrt = "/path/to/your/certs.pem"
+	pemKey = "/path/to/your/key.pem"
 
 
 	#Setup ssl context and load pem key and crt
