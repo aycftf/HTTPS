@@ -56,7 +56,7 @@ for token in KEYS:
 
 def addKeys():
 	dumpuri = "http://127.0.0.1:8080/apilist"
-	getDump = "curl -fsS http://127.0.0.1:8080/apilist -O && mv apilist Dump.txt >> /dev/null"
+	getDump = "curl -fsS http://127.0.0.1:8080/apilist -O && mv apilist Dump.txt 2&>/dev/null"
 	readKeysComm = "cat Dump.txt"
 	checkStat = httpx.get(dumpuri)
 	entryKeys = []
